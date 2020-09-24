@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863e8e75817a98742b953c311e0c75d2, type: 3}
+  m_Name: SkinsList
+  m_EditorClassIdentifier: 
+  tileSkins:
+  - id: 1
+    tilePrefab: {fileID: 8038055109925550873, guid: 7bad8f1bdcbc15946904e86e9ea007e9,
+      type: 3}
+    title: Default
+    price: 0
+    icon: {fileID: 21300000, guid: bcadda5e75bf679428f82604999929b0, type: 3}
+  - id: 2
+    tilePrefab: {fileID: 8038055109925550873, guid: 188a58c5c979e924e893f90f854ace69,
+      type: 3}
+    title: Checkers
+    price: 100
+    icon: {fileID: 21300000, guid: 9108acd60b83e974e81f8990d9a03a89, type: 3}
