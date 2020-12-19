@@ -21,8 +21,8 @@ public class Tile : MonoBehaviour
     [SerializeField] private AudioClip fitSound = null;
 
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private GameObject idealHit = null;
-    [SerializeField] private ParticleSystem extendFX = null;
+   // [SerializeField] private GameObject idealHit = null;
+    //[SerializeField] private ParticleSystem extendFX = null;
     private int ltId;
     
     private void OnEnable()
@@ -70,9 +70,9 @@ public class Tile : MonoBehaviour
         Vector3 p = PreviousTile.transform.position;
         transform.position = new Vector3(p.x, transform.position.y, p.z);
         PreviousTile = this;
-        LeanTween.alpha(idealHit, 0, .5f)
-            .setFrom(0.9f)
-            .setOnComplete(() => { idealHit.SetActive(false); });
+        // LeanTween.alpha(idealHit, 0, .5f)
+        //     .setFrom(0.9f)
+        //     .setOnComplete(() => { idealHit.SetActive(false); });
         float targetPitch = 0.9f + (GameStatus.Combo > 7 ? 7 : GameStatus.Combo) * 0.05f;
         SoundManager.Instance.Vibrate(30);
         SoundManager.Instance.PlaySoundWithPitch(fitSound, targetPitch, .5f);
@@ -137,7 +137,8 @@ public class Tile : MonoBehaviour
 
     private void CreateSplittedPart(float partScale, float partPos)
     {
-        GameObject part = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject part = Instantiate(gameObject);
+        //GameObject part = GameObject.CreatePrimitive(PrimitiveType.Cube);
         part.transform.localScale = new Vector3
         (
             Direction == Direction.X ? partScale : transform.localScale.x,
@@ -151,14 +152,14 @@ public class Tile : MonoBehaviour
             Direction == Direction.X ? transform.position.z : partPos
         );
         part.AddComponent<Rigidbody>();
-        part.GetComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
+        //part.GetComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
        // Destroy(part, 4f);
     }
 
     IEnumerator ExtendBlock(float multiplier, float time)
     {
         GameStatus.Combo = 0;
-        extendFX.Play();
+        //extendFX.Play();
         Vector3 s = transform.localScale;
         Vector3 t = new Vector3(s.x * multiplier, s.y, s.z * multiplier);
         float elapsed = 0;

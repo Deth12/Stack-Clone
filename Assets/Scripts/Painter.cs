@@ -56,7 +56,15 @@ public static class Painter
 
     public static void PaintObject(GameObject obj, bool increaseCounter)
     {
-        obj.GetComponent<MeshRenderer>().material.color = GetNextColor(increaseCounter);
+        Mesh mesh = obj.GetComponent< MeshFilter >().mesh;
+        Color32[] newColors = new Color32[mesh.vertices.Length];
+        Color32 newColor = GetNextColor(increaseCounter);
+        for (int vertexIndex = 0; vertexIndex < newColors.Length; vertexIndex++)
+        {
+            newColors[vertexIndex] = newColor;
+        }
+        mesh.colors32 = newColors;
+        //obj.GetComponent<MeshRenderer>().material.color = GetNextColor(increaseCounter);
     }
 
     public static void PaintBackground(Image img)
